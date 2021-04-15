@@ -1,0 +1,31 @@
+package Helper2;
+
+import com.mysql.cj.jdbc.Driver;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+/**
+ *
+ * @author ajengnur
+ */
+//mendeklarasikan class untuk membantu mengkoneksikan dengan mysql
+public class ConnectionHelper {
+    
+    //untuk memanggil databse di mysql dengan nama "Perpustakaan"
+   private static final String DB_NAME = "Perpustakaan";
+   //nama pengguna default untuk databse mysql yait "root"
+   private static final String USER = "root";
+   //merupakan kata sandi database mysql
+   private static final String PASSWORD = "";
+   //digunakan untuk connection url pada mysql
+   private static final String URL = "jdbc:mysql://localhost:3306/" + DB_NAME;
+   
+   public static Connection getConnection() throws SQLException {
+       //untuk mendapatkan connection pada driver manager (URL, USER, PASSWORD)
+        //kemudian akan mengembalikan connection
+       DriverManager.registerDriver(new Driver());
+       Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+       return connection;       
+   }    
+}
